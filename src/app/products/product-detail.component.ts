@@ -10,7 +10,7 @@ import { ProductService } from './product.service';
     styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-    pageTitle: string = 'Product Detail';
+    pageTitle = 'Product Detail';
     product: IProduct;
     errorMessage: string;
 
@@ -18,9 +18,9 @@ export class ProductDetailComponent implements OnInit {
 
     ngOnInit() {
         // the plus is javascript shortcut to convert the parametar to number
-        let par = this.route.snapshot.paramMap.get('id');
+        const par = this.route.snapshot.paramMap.get('id');
         if (par) {
-            let id = +par;
+            const id = +par;
             this.getProduct(id);
         }
     }
@@ -29,7 +29,7 @@ export class ProductDetailComponent implements OnInit {
         this.productService.getProduct(id).subscribe(
             product => this.product = product,
             error => this.errorMessage = <any>error
-        )
+        );
     }
 
     onBack(): void {

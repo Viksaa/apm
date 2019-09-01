@@ -8,14 +8,14 @@ import { ProductService } from './product.service';
 })
 
 export class ProductListComponent implements OnInit {
-    pageTitle: string = 'Product List';
-    imageWidth: number = 50;
-    imageMargin: number = 2;
-    showImage: boolean = false;
+    pageTitle = 'Product List';
+    imageWidth = 50;
+    imageMargin = 2;
+    showImage = false;
     errorMessage: string;
-    
+
     _listFilter: string;
-    
+
     get listFilter(): string {
         return this._listFilter;
     }
@@ -34,7 +34,7 @@ export class ProductListComponent implements OnInit {
     ngOnInit(): void {
         this.productService.getProducts().subscribe(
             products => {
-                this.products = products
+                this.products = products;
                 this.filteredProducts = this.products;
             },
             error => this.errorMessage = <any>error
