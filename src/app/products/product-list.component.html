@@ -28,15 +28,18 @@
                         <th>Available</th>
                         <th>Price</th>
                         <th>5 Star Rating</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor='let product of filteredProducts'>
-                        <td> <img  *ngIf='showImage'
-                            [src]='product.imageUrl'
-                            [title]='product.productName'
-                            [style.width.px]='imageWidth'
-                            [style.margin.px]='imageMargin'> </td>
+                        <td>
+                            <img *ngIf='showImage'
+                                  [src]='product.imageUrl'
+                                  [title]='product.productName'
+                                  [style.width.px]='imageWidth'
+                                  [style.margin.px]='imageMargin'>
+                        </td>
                         <td>
                             <a [routerLink]="['/products', product.id]">
                                 {{ product.productName }}
@@ -45,8 +48,10 @@
                         <td>{{ product.productCode | lowercase | convertToSpaces: '-'}}</td>
                         <td>{{ product.releaseDate }}</td>
                         <td>{{ product.price | currency: 'USD':'symbol':'1.2-2'}}</td>
-                        <td><pm-star [rating]='product.starRating'
-                            (ratingClicked)='onRatingClicked($event)'></pm-star></td>
+                        <td>
+                            <pm-star [rating]='product.starRating' (ratingClicked)='onRatingClicked($event)'></pm-star>
+                        </td>
+                        <td><button class="btn btn-sm btn-outline-primary" [routerLink]="['/products/edit', product.id]">Edit</button></td>
                     </tr>
                 </tbody>
             </table>
